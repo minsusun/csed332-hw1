@@ -13,12 +13,16 @@ public class Bank {
 
     // TODO: add more fields to implement this class
     // Use the Java Collection Framework, including List, Map, Set, etc.
+    List<Account> accounts;
+    int accountIndex;
 
     /**
      * Create a bank. Initially, there is no account.
      */
     Bank() {
         // TODO implement this
+        this.accounts = new ArrayList<Account>();
+        this.accountIndex = 100000;
     }
 
     /**
@@ -29,6 +33,9 @@ public class Bank {
      */
     Account findAccount(int accNum) {
         // TODO implement this
+        for (Account e : this.accounts)
+            if (e.getAccountNumber() == accNum)
+                return e;
         return null;
     }
 
@@ -40,7 +47,11 @@ public class Bank {
      */
     List<Account> findAccountByName(String name) {
         // TODO implement this
-        return null;
+        List<Account> result = new ArrayList<Account>();
+        for (Account e : this.accounts)
+            if (e.getOwner().equals(name))
+                result.add(e);
+        return result;
     }
 
     /**
@@ -54,7 +65,13 @@ public class Bank {
      */
     Account createAccount(String name, double initial, double rate, boolean compound) {
         // TODO implement this
-        return null;
+        if(name.isBlank() || initial < 0 || rate < 0)
+            return null;
+        if(compound)
+            this.accounts.add(new CompoundInterestAccount(accountIndex++, initial, rate, name));
+        else
+            this.accounts.add(new SimpleInterestAccount(accountIndex++, initial, rate, name));
+        return this.accounts.get(this.accounts.size() - 1);
     }
 
     /**
@@ -67,5 +84,11 @@ public class Bank {
      */
     void transfer(Account src, Account dst, double amount) throws IllegalStateException {
         // TODO implement this
+        try{
+            src.withdraw(amount);
+            dst.deposit(amount);
+        }catch (IllegalStateException e){
+            throw new IllegalStateException();
+        }
     }
 }

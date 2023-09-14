@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.postech.csed332.homework1.BankTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-09-14T05:27:30" hostname="51beef335fd7" time="0.037">
+  <properties/>
+  <testcase name="testCreateAccount()" classname="edu.postech.csed332.homework1.BankTest" time="0.031"/>
+  <testcase name="testCompoundInterestAccount()" classname="edu.postech.csed332.homework1.BankTest" time="0.001"/>
+  <testcase name="testFindAccount()" classname="edu.postech.csed332.homework1.BankTest" time="0.001"/>
+  <testcase name="testTransferMoney()" classname="edu.postech.csed332.homework1.BankTest" time="0.0"/>
+  <testcase name="testCreateSecondAccount()" classname="edu.postech.csed332.homework1.BankTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

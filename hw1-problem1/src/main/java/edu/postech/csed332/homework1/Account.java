@@ -19,6 +19,13 @@ interface Account {
     double getBalance();
 
     /**
+     * Return the IR(Interest Rate) of the account
+     *
+     * @return the Interest Rate
+     */
+    double getIR();
+
+    /**
      * Return the owner of the account.
      *
      * @return the owner

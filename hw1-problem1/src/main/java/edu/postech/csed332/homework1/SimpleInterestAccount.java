@@ -6,8 +6,14 @@ package edu.postech.csed332.homework1;
  */
 class SimpleInterestAccount extends AbstractAccount implements Account {
     //TODO implement this (including fields and a constructor if needed)
+    SimpleInterestAccount(int number, double balance, double ir, String owner) {
+        super(number, balance, ir, owner);
+    }
 
     public void elapseTime(int elapsedDate) {
         //TODO implement this
+        double currentBalance = getBalance();
+        double delta = currentBalance * (1 + getIR() * elapsedDate / 365) - currentBalance;
+        deposit(delta);
     }
 }
