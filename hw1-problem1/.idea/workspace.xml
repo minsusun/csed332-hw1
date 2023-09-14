@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5fdf5c7-37aa-4015-93a6-297efb4358b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/AbstractAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/AbstractAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/CompoundInterestAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/CompoundInterestAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/SimpleInterestAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/postech/csed332/homework1/SimpleInterestAccount.java" afterDir="false" />
-    </list>
+    <list default="true" id="a5fdf5c7-37aa-4015-93a6-297efb4358b2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +37,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -54,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1694618971876</updated>
-      <workItem from="1694618973938" duration="5314000" />
+      <workItem from="1694618973938" duration="5647000" />
     </task>
     <servers />
   </component>
