@@ -59,4 +59,14 @@ public class GameTest {
         board.placeUnit(mob, pos2);
         Assertions.assertTrue(tower.attack().contains(mob));
     }
+
+    @Test
+    void testGetMonster() {
+        var board = new GameBoardImpl(5, 3);
+        var mob = new GroundMob(board);
+        var pos1 = new Position(1, 1);
+
+        board.placeUnit(mob, pos1);
+        Assertions.assertTrue(board.getMonsters().contains(mob));
+    }
 }

@@ -14,19 +14,23 @@ import java.util.stream.Collectors;
  * some methods can be moved to the abstract class.
  */
 public class GroundTower implements Tower {
+
+    private final GameBoard board;
+
     public GroundTower(GameBoard gameBoard) {
         // TODO implement this
+        this.board = gameBoard;
     }
 
     @Override
     public Set<Monster> attack() {
         // TODO implement this
-        return null;
+        return this.board.getMonsters().stream().filter(monster -> monster.isGround() && this.board.getPosition(monster).getDistance(this.board.getPosition(this)) <= 1).collect(Collectors.toSet());
     }
 
     @Override
     public GameBoard getBoard() {
         // TODO implement this
-        return null;
+        return this.board;
     }
 }
