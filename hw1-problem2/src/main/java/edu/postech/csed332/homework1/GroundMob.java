@@ -18,10 +18,12 @@ import java.util.stream.Stream;
 public class GroundMob implements Monster {
 
     private final GameBoard board;
+    private Map<Position, Integer> visited;
 
     public GroundMob(GameBoard gameBoard) {
         // TODO implement this
         this.board = gameBoard;
+        visited = new HashMap<>();
     }
 
     @Override
@@ -40,26 +42,37 @@ public class GroundMob implements Monster {
     public Position move() {
         // TODO implement this
         Position mobPosition = this.board.getPosition(this);
-        List<Position> candidatePositions = new ArrayList<>(){{ add(new Position(mobPosition.x(), mobPosition.y())); }};
+        visited.put(mobPosition, visited.computeIfAbsent(mobPosition, position -> 0) + 1);
+
+        List<Position> candidatePositions = new ArrayList<>();
         List<Position> reservePositions = new ArrayList<>();
-        Set<Position> availablePositions = new HashSet<>(Arrays.asList(
+        List<Position> availablePositions = new ArrayList<>(Arrays.asList(
                 new Position(mobPosition.x() + 1, mobPosition.y()), new Position(mobPosition.x(), mobPosition.y() + 1),
-                new Position(mobPosition.x() - 1, mobPosition.y()), new Position(mobPosition.x(), mobPosition.y() - 1)
-        )).stream().filter(this.board::isValidPosition).collect(Collectors.toSet());
+                new Position(mobPosition.x(), mobPosition.y() - 1), new Position(mobPosition.x() - 1, mobPosition.y())
+        )).stream().filter(this.board::isValidPosition).toList();
+
         for(Position position: availablePositions) {
             Set<Unit> units = this.board.getUnitsAt(position);
             Set<Tower> towers = this.board.getTowers();
 
             if((int) units.stream().filter(Unit::isGround).count() >= 1) continue;
 
-            if(towers.stream().anyMatch(tower -> this.board.getPosition(tower).getDistance(position) <= 1))
+            if(visited.computeIfAbsent(position, p -> 0) > 5) continue;
+
+            if(position.x() == this.board.getWidth() - 1) return position;
+
+            if(towers.stream().anyMatch(tower -> tower instanceof GroundTower && this.board.getPosition(tower).getDistance(position) <= 1))
                 reservePositions.add(position);
             else
                 candidatePositions.add(position);
         }
-        if(candidatePositions.size() <= 1)
+
+        if((int) candidatePositions.stream().filter(position -> position.x() > mobPosition.x()).count() >= 1)
+            candidatePositions = candidatePositions.stream().filter(position -> position.x() > mobPosition.x()).collect(Collectors.toList());
+        else if(candidatePositions.size() <= 1)
             candidatePositions.addAll(reservePositions);
-        Collections.shuffle(candidatePositions);
+        candidatePositions.add(new Position(mobPosition.x(), mobPosition.y()));
+
         return candidatePositions.get(0);
     }
 }
